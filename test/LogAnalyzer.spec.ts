@@ -7,7 +7,7 @@ describe("LogProcessor", () => {
   beforeAll(() => {
     // populate 100 mock log
     for (let i = 1; i <= 100; i++) {
-      logs.push(Log.fromString(`81.225.23.146 [2018/13/10:14:02:39] "GET /api/playeritems?playerId=3" 200 ${i}`));
+      logs.push(Log.parse(`81.225.23.146 [2018/13/10:14:02:39] "GET /api/playeritems?playerId=3" 200 ${i}`));
     }
   });
 

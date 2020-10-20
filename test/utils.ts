@@ -1,8 +1,9 @@
 import * as fs from "fs";
 
+const http_methods = ["GET", "POST", "PUT", "DELETE"];
 const cwd = process.cwd();
 const directory = `${cwd}/var/log/httpd`;
-const logMessage = '[2018/13/10:14:02:39] "GET /api/playeritems?playerId=3" 200';
+const logMessage = (httpMethd: string) => `[2018/13/10:14:02:39] "${httpMethd} /api/playeritems?playerId=3" 200`;
 export async function generateMockLog(numOfFiles: number = 3, numberOfLines = 100) {
   const date = new Date();
   const year = date.getFullYear();
@@ -16,7 +17,8 @@ export async function generateMockLog(numOfFiles: number = 3, numberOfLines = 10
     stream = fs.createWriteStream(path);
 
     for (let j = 0; j < numberOfLines; j++) {
-      stream.write(`${RandomGenerator.randomIp()} ${logMessage} ${RandomGenerator.randomResponseTime()}\n`);
+      const httpMethod = http_methods[RandomGenerator.randomInt(4)];
+      stream.write(`${RandomGenerator.randomIp()} ${logMessage(httpMethod)} ${RandomGenerator.randomResponseTime()}\n`);
     }
   }
 }

@@ -13,23 +13,27 @@ export class Log implements Comparable<Log> {
     public readonly responseTime: number
   ) {}
 
-  isEqualTo(target: Log): boolean {
+  public isEqualTo(target: Log): boolean {
     return target.responseTime === this.responseTime;
   }
 
-  isLessThan(target: Log): boolean {
+  public isLessThan(target: Log): boolean {
     return this.responseTime < target.responseTime;
   }
 
-  isGreaterThan(target: Log): boolean {
+  public isGreaterThan(target: Log): boolean {
     return this.responseTime > target.responseTime;
+  }
+
+  public isRead() {
+    return this.httpMethod === "GET";
   }
 
   /**
    * @desc convert a record string into log domain object
    * @param record
    */
-  static fromString(record: String) {
+  static parse(record: String) {
     const metadata: string[] = record.replace(/\"/g, "").split(" ");
     const ip = metadata[0];
     const dateTime = metadata[1];
