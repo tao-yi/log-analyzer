@@ -6,6 +6,7 @@ The solution for calculating the 90%, 95% and 99% percentile response time for R
   - [Installation](#installation)
   - [Build](#build)
   - [Run](#run)
+  - [Populate Test Data](#populate-test-data)
 
 ## Installation
 
@@ -40,4 +41,12 @@ example:
 yarn start
 # or you can specify custom directory
 yarn start /path/to/logs
+```
+
+## Populate Test Data
+
+The test log files are located in `./var/log/httpd` directory.
+
+```bash
+yarn seed
 ```
