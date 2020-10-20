@@ -30,8 +30,8 @@ export class Log implements Comparable<Log> {
    * @desc convert a record string into log domain object
    * @param record
    */
-  static fromString(record: string) {
-    const metadata: string[] = record.replace('"', "").split(" ");
+  static fromString(record: String) {
+    const metadata: string[] = record.replace(/\"/g, "").split(" ");
     const ip = metadata[0];
     const dateTime = metadata[1];
     const httpMethod = metadata[2];
