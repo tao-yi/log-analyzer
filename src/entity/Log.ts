@@ -20,9 +20,8 @@ export class Log implements Comparable<Log> {
   isLessThan(target: Log): boolean {
     return this.responseTime < target.responseTime;
   }
-  isGreaterThan(target: Log): boolean {
-    // console.log(this.responseTime, target.responseTime);
 
+  isGreaterThan(target: Log): boolean {
     return this.responseTime > target.responseTime;
   }
 
