@@ -31,7 +31,7 @@ describe("Heap", () => {
     expect(heap.items).toEqual(maxHeap);
   });
 
-  it("sort should sort items in descending order", () => {
+  it("sort should sort items in ascending order", () => {
     heap = new Heap([log1, log2, log3, log4, log5]);
     heap.sort();
 
