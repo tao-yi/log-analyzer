@@ -30,4 +30,11 @@ describe("Heap", () => {
     heap.insert(log5);
     expect(heap.items).toEqual(maxHeap);
   });
+
+  it("sort should sort items in descending order", () => {
+    heap = new Heap([log1, log2, log3, log4, log5]);
+    heap.sort();
+
+    expect(heap.items).toEqual([log5, log3, log1, log4, log2]);
+  });
 });
