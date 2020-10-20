@@ -1,4 +1,4 @@
-import { createReadStream, readdirSync, readFileSync } from "fs";
+import * as fs from "fs";
 import * as readline from "readline";
 
 export type LineHandler = (line: string) => void;
@@ -28,33 +28,29 @@ export class LogReader {
   }
 
   /**
-   * @desc read a single log file
-   * @param path the path to the log file to READ
-   */
-  public read(path: string): Buffer {
-    const buffer = readFileSync(path);
-    return buffer;
-  }
-
-  /**
    * @desc read log files from specified directory line by line
    * @param directory
    */
   public async readDir(directory: string, handler: LineHandler) {
-    const files = readdirSync(directory);
-    for (const file of files) {
-      // read *.log files only
-      if (this.isLogFile(file)) {
-        const filePath = `${this.directory}/${file}`;
-        const fileStream = createReadStream(filePath);
-        const lineReader = readline.createInterface({
-          input: fileStream,
-          crlfDelay: Infinity
-        });
-        for await (const line of lineReader) {
-          handler(line);
+    try {
+      const files = fs.readdirSync(directory);
+      for (const file of files) {
+        // read *.log files only
+        if (this.isLogFile(file)) {
+          const filePath = `${this.directory}/${file}`;
+          const fileStream = fs.createReadStream(filePath);
+          const lineReader = readline.createInterface({
+            input: fileStream,
+            crlfDelay: Infinity
+          });
+          for await (const line of lineReader) {
+            handler(line);
+          }
         }
       }
+    } catch (e) {
+      console.error(e);
+      throw e;
     }
   }
 }

@@ -26,15 +26,7 @@ export class Comparator<T> {
     return this.compare(a, b) === -1;
   }
 
-  isLessThanOrEqual(a: T, b: T) {
-    return this.isLessThan(a, b) || this.isEqual(a, b);
-  }
-
   isGreaterThan(a, b) {
     return this.compare(a, b) === 1;
-  }
-
-  isGreaterThanOrEqual(a, b) {
-    return this.isEqual(a, b) || this.isGreaterThan(a, b);
   }
 }
