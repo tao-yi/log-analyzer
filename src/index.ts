@@ -1,35 +1,30 @@
-// import program from "commander";
+import chalk from "chalk";
 import { Log } from "./entity/Log";
 import { Heap } from "./heap";
 import { LogAnalyzer } from "./LogAnalyzer";
 import { LogReader } from "./LogReader";
 
 const cwd = process.cwd();
-const dir = `${cwd}/var/log/httpd`;
+const defaultPath = `${cwd}/var/log/httpd`;
 
 async function main() {
-  // program.version("1.0.0").description("riot");
-
+  const path = process.argv[2] || defaultPath;
+  // create a file reader for reading logs
   const reader = LogReader.getInstance();
   const heap = new Heap<Log>();
-
   // read logs line by line
-  await reader.readDir(dir, (line) => {
+  await reader.readDir(path, (line) => {
     const log = Log.parse(line);
     if (log.isRead()) {
       heap.insert(log);
     }
   });
-
-  console.log(heap.size);
-  console.log(heap.items);
-
+  // heap sort to get logs in ascending order
   heap.sort();
 
-  heap.items.forEach((i) => console.log(i.responseTime));
-
-  const result = LogAnalyzer.calculatePercentile(heap.items, 95);
-  console.log(result);
+  console.log(chalk.cyanBright.bold(LogAnalyzer.calculatePercentile(heap.items, 90)));
+  console.log(chalk.cyanBright.bold(LogAnalyzer.calculatePercentile(heap.items, 95)));
+  console.log(chalk.cyanBright.bold(LogAnalyzer.calculatePercentile(heap.items, 99)));
 }
 
 main();
