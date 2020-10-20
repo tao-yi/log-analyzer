@@ -9,7 +9,7 @@
     "build": "tsc -p ./tsconfig.json",
     "debug": "DEBUG=* ts-node ./src/index.ts",
     "test": "jest ./test",
-    "generate": "ts-node ./test/utils.ts"
+    "seed": "ts-node ./test/utils.ts"
   },
   "devDependencies": {
     "@types/inquirer": "^7.3.1",
