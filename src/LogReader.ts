@@ -11,6 +11,10 @@ export class LogReader {
   private static instance: LogReader;
   private constructor() {}
 
+  /**
+   * @desc check if target file is log file
+   * @param file
+   */
   private isLogFile(file: string) {
     return file.endsWith(".log");
   }

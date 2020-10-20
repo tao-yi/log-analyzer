@@ -1,5 +1,6 @@
 import { Log } from "./entity/Log";
 import { Heap } from "./heap";
+import { LogAnalyzer } from "./LogAnalyzer";
 import { LogReader } from "./LogReader";
 
 const cwd = process.cwd();
@@ -7,12 +8,6 @@ const dir = `${cwd}/var/log/httpd`;
 
 async function main() {
   const reader = LogReader.getInstance();
-  // read logs
-  // const logsString = reader.readDir(dir).toString();
-  // calculate percentile
-  // const logsArray = logsString.split("\n");
-  // console.log(logsArray);
-
   const heap = new Heap<Log>();
 
   // read logs line by line
@@ -21,8 +16,12 @@ async function main() {
     heap.insert(log);
   });
 
-  // console.log(heap.size);
-  // console.log(heap.items);
+  heap.sort();
+
+  heap.items.forEach((i) => console.log(i.responseTime));
+
+  const result = LogAnalyzer.calculatePercentile(heap.items, 95);
+  console.log(result);
 }
 
 main();
