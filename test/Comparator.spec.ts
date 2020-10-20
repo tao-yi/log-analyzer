@@ -1,4 +1,4 @@
-import { Comparator } from "../src/utils/Comarator";
+import { Comparator } from "../src/utils/Comparator";
 
 describe("Comparator", () => {
   let comparator: Comparator<any> = new Comparator();

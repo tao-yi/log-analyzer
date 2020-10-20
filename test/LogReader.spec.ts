@@ -1,9 +1,16 @@
 // jest.mock("fs");
 // jest.mock("readline");
 import * as fs from "fs";
-import { ReadStream } from "fs";
 import * as readline from "readline";
 import { LineHandler, LogReader } from "../src/LogReader";
+
+jest.mock("fs", () => ({
+  createReadStream: jest.fn(),
+  readdirSync: jest.fn()
+}));
+jest.mock("readline", () => ({
+  createInterface: jest.fn()
+}));
 
 describe("LogReader", () => {
   let instance1: LogReader;
@@ -12,7 +19,7 @@ describe("LogReader", () => {
   let createReadStream: jest.SpyInstance;
   let readdirSync: jest.SpyInstance;
 
-  const readStream = {} as ReadStream;
+  const readStream = {} as fs.ReadStream;
   const filesInLogDirectory = ["a.log", "b.log", "c.log", "d.text"];
   const expectedOutput = [
     Promise.resolve('51.90.143.210 [2018/13/10:14:02:39] "GET /api/playeritems?playerId=3" 200 1;'),

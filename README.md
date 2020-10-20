@@ -7,6 +7,7 @@ The solution for calculating the 90%, 95% and 99% percentile response time for R
   - [Build](#build)
   - [Run](#run)
   - [Populate Test Data](#populate-test-data)
+  - [Unit Test](#unit-test)
 
 ## Installation
 
@@ -49,4 +50,10 @@ The test log files are located in `./var/log/httpd` directory.
 
 ```bash
 yarn seed
+```
+
+## Unit Test
+
+```bash
+yarn test
 ```
