@@ -1,4 +1,4 @@
-import { Comparable } from "../utils/Comarator";
+import { Comparable } from "../utils/Comparator";
 
 /**
  * @desc domain object for log data

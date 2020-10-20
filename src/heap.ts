@@ -1,5 +1,5 @@
 import debug from "debug";
-import { Comparable } from "./utils/Comarator";
+import { Comparable } from "./utils/Comparator";
 
 export class Heap<T extends Comparable<T>> {
   private readonly heapContainer: T[];
