@@ -21,6 +21,8 @@ export async function generateMockLog(numOfFiles: number = 3, numberOfLines = 10
       stream.write(`${RandomGenerator.randomIp()} ${logMessage(httpMethod)} ${RandomGenerator.randomResponseTime()}\n`);
     }
   }
+
+  console.log(`Successfully generated: ${numOfFiles} log files, ${numberOfLines} lines of random logs.`);
 }
 
 class RandomGenerator {
