@@ -48,6 +48,8 @@ yarn start /path/to/logs
 
 The test log files are located in `./var/log/httpd` directory.
 
+Test data can also be re-populated into `./var/log/httpd` using script:
+
 ```bash
 yarn seed
 ```
@@ -57,3 +59,12 @@ yarn seed
 ```bash
 yarn test
 ```
+
+## Time & Space Complexity Analysis
+
+This is implemented using heap(max-heap) data structure and heap sort algorithm.
+
+For input N lines of log:
+
+- time complexity: O(N\*log(N))
+- space complexity: O(N)
