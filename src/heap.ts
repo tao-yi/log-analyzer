@@ -38,6 +38,8 @@ export class Heap<T extends Comparable<T>> {
     return arr;
   }
 
+  // time complexity: O(N*log(N))
+  // space complexity: O(N)
   public sort() {
     // heap sort
     for (let i = this.heapContainer.length - 1; i >= 0; i--) {
@@ -54,6 +56,7 @@ export class Heap<T extends Comparable<T>> {
     return this.heapContainer[0];
   }
 
+  // time complexity: O(log(N))
   private heapify(arr: T[], size: number, lastNonLeafNodeIndex: number) {
     let maxIndex = lastNonLeafNodeIndex;
 
@@ -76,6 +79,7 @@ export class Heap<T extends Comparable<T>> {
     }
   }
 
+  // time complexity: O(log(N))
   public insert(newValue: T) {
     const size = this.heapContainer.length;
     this.heapContainer.push(newValue);
