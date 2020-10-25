@@ -3,11 +3,17 @@
 The solution for calculating the 90%, 95% and 99% percentile response time for READ API requests, based on ALL log files stored in /var/log/httpd/\*.log.
 
 - [Riot Log Processor](#riot-log-processor)
+  - [Prerequisite](#Prerequisite)
   - [Installation](#installation)
   - [Build](#build)
   - [Run](#run)
   - [Populate Test Data](#populate-test-data)
   - [Unit Test](#unit-test)
+
+## Prerequisite
+
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/getting-started/install)
 
 ## Installation
 
