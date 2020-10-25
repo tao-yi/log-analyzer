@@ -30,12 +30,18 @@ npm install
 ## Build
 
 ```bash
+# install dependency
+yarn
+# start build
 yarn build
 ```
 
 or
 
 ```bash
+# install dependency
+npm i
+# start build
 npm run build
 ```
 
